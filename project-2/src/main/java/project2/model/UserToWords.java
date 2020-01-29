@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "word_cloud")
-public class WordCloud {
+@Table(name = "user_to_words")
+public class UserToWords {
   
   @Id
   @Column(name="id")
@@ -19,13 +19,13 @@ public class WordCloud {
   @Column(name="trainer_id")
   private Integer trainerId;
   
-  @Column(name="total_count")
+  @Column(name="user_id")
   private Integer totalCount;
   
   @Column(name="word")
   private String word;
-  
-  public WordCloud() {
+
+  public UserToWords() {
     super();
   }
 
@@ -45,14 +45,6 @@ public class WordCloud {
     this.trainerId = trainerId;
   }
 
-  public String getWord() {
-    return word;
-  }
-
-  public void setWord(String word) {
-    this.word = word;
-  }
-
   public Integer getTotalCount() {
     return totalCount;
   }
@@ -61,10 +53,12 @@ public class WordCloud {
     this.totalCount = totalCount;
   }
 
- 
-  
-  
-  
-  
+  public String getWord() {
+    return word;
+  }
+
+  public void setWord(String word) {
+    this.word = word;
+  }
 
 }

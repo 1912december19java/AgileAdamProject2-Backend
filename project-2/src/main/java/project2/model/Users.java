@@ -40,6 +40,10 @@ public class Users {
   @JoinColumn(name="user_id")
   private WordCloud trainerWord;
   
+  @ManyToOne
+  @JoinColumn(name="user_id")
+  private UserToWords userWord;
+  
   public Users() {
     super();
   }
@@ -76,6 +80,4 @@ public class Users {
     this.lastName = lastName;
   }
   
-   
-
 }
