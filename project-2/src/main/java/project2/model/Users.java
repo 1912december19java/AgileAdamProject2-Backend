@@ -79,5 +79,37 @@ public class Users {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+
+  public AccountInfo getAccount() {
+    return account;
+  }
+
+  public void setAccount(AccountInfo account) {
+    this.account = account;
+  }
+
+  public UserComments getUserComment() {
+    return userComment;
+  }
+
+  public void setUserComment(UserComments userComment) {
+    this.userComment = userComment;
+  }
+
+  public WordCloud getTrainerWord() {
+    return trainerWord;
+  }
+
+  public void setTrainerWord(WordCloud trainerWord) {
+    this.trainerWord = trainerWord;
+  }
+
+  public UserToWords getUserWord() {
+    return userWord;
+  }
+
+  public void setUserWord(UserToWords userWord) {
+    this.userWord = userWord;
+  }
   
 }

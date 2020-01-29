@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,10 +22,14 @@ public class UserToWords {
   private Integer trainerId;
   
   @Column(name="user_id")
-  private Integer totalCount;
+  private Integer userId;
   
   @Column(name="word")
   private String word;
+  
+  @OneToMany
+  @JoinColumn(name="user_id")
+  private Users userWord;
 
   public UserToWords() {
     super();
@@ -46,11 +52,11 @@ public class UserToWords {
   }
 
   public Integer getTotalCount() {
-    return totalCount;
+    return userId;
   }
 
-  public void setTotalCount(Integer totalCount) {
-    this.totalCount = totalCount;
+  public void setTotalCount(Integer userId) {
+    this.userId = userId;
   }
 
   public String getWord() {
@@ -60,5 +66,15 @@ public class UserToWords {
   public void setWord(String word) {
     this.word = word;
   }
+
+  public Users getUserWord() {
+    return userWord;
+  }
+
+  public void setUserWord(Users userWord) {
+    this.userWord = userWord;
+  }
+  
+  
 
 }

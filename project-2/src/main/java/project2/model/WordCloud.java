@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ public class WordCloud {
   
   @Column(name="word")
   private String word;
+  
+  @OneToMany
+  @JoinColumn(name="user_id")
+  private Users userWordCount;
   
   public WordCloud() {
     super();
@@ -61,10 +67,12 @@ public class WordCloud {
     this.totalCount = totalCount;
   }
 
- 
-  
-  
-  
-  
+  public Users getUserWordCount() {
+    return userWordCount;
+  }
+
+  public void setUserWordCount(Users userWordCount) {
+    this.userWordCount = userWordCount;
+  } 
 
 }

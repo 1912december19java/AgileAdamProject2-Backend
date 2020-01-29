@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +30,20 @@ public class UserComments {
   @Column(name="comment_text")
   private String commentText;
   
+  @OneToMany
+  @JoinColumn(name="user_id")
+  private Users userComment;
+  
   public UserComments() {
     super();
+  }
+
+  public Users getUserComment() {
+    return userComment;
+  }
+
+  public void setUserComment(Users userComment) {
+    this.userComment = userComment;
   }
 
   public Integer getId() {
