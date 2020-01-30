@@ -6,24 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import project2.model.Users;
+import project2.model.Associates;
 
 @Repository
 @Transactional
 @EnableTransactionManagement
-public class UsersImp {
+public class AssociatesImp {
 
   @Autowired
   private SessionFactory sf;
 
-  public UsersImp(SessionFactory sf) {
+  public AssociatesImp(SessionFactory sf) {
     this.sf = sf;
   }
 
-  public Users getUserInfoById(Integer id) {
+  public Associates getUserInfoByUsername(String username) {
     
     Session session = sf.getCurrentSession();
-    Users user = (Users) session.get(Users.class, id);
+    
+    
+    Associates user = (Associates) session.get(Associates.class, username);
+    
+    
     return user;
     
   }

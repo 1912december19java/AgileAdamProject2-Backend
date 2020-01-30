@@ -6,26 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import project2.model.AccountInfo;
+import project2.model.UserComments;
 
 @Repository
 @Transactional
 @EnableTransactionManagement
-public class AccountInfoImp {
-
+public class UserCommentsImp {
+  
   @Autowired
   private SessionFactory sf;
 
-  public AccountInfoImp(SessionFactory sf) {
+  public UserCommentsImp(SessionFactory sf) {
     this.sf = sf;
   }
 
-  public AccountInfo getInfoByTrainerId(Integer id) {
+  public UserComments getCommentInfoById(Integer id) {
     
-    Session session = sf.getCurrentSession();
-    AccountInfo trainerId = (AccountInfo) session.get(AccountInfo.class, id);
-    return trainerId;
+    Session session = sf.getCurrentSession();    
+    UserComments user = (UserComments) session.get(UserComments.class, id);
+    return user;
     
   }
+
 
 }

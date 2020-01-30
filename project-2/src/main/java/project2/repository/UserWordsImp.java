@@ -6,33 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import project2.model.UserToWords;
+import project2.model.UserWords;
 
 @Repository
 @Transactional
 @EnableTransactionManagement
-public class UsersToWordsImp {
-
+public class UserWordsImp {
+  
   @Autowired
   private SessionFactory sf;
 
-  public UsersToWordsImp(SessionFactory sf) {
+  public UserWordsImp(SessionFactory sf) {
     this.sf = sf;
   }
 
-  public void saveOrUpdateByUserId(UserToWords word) {
-
-    Session session = sf.getCurrentSession();
-    session.saveOrUpdate(word);
-
+  public UserWords getWordInfoById(Integer id) {
+    
+    Session session = sf.getCurrentSession();    
+    UserWords user = (UserWords) session.get(UserWords.class, id);    
+    return user;
+    
   }
 
-  public UserToWords getWordByUserId(Integer id) {
-
-    Session session = sf.getCurrentSession();
-    UserToWords genre = (UserToWords) session.get(UserToWords.class, id);
-    return genre;
-
-  }
 
 }
