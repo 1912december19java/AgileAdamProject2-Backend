@@ -1,5 +1,7 @@
 package project2.driver;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,6 +28,10 @@ public class Driver {
     TrainersImp trainDao = ac.getBean(TrainersImp.class);
     Trainers train = trainDao.getTrainerInfoByUsername("aking");    
     System.out.println(train.toString());
+   //Getting all trainers 
+    TrainersImp trainAllDao = ac.getBean(TrainersImp.class);
+    List<Trainers> trainers = trainAllDao.getAllTrainerInformation();
+    System.out.println(trainers.toString());
   //Getting comment info by comment id
     UserCommentsImp commDao = ac.getBean(UserCommentsImp.class);
     UserComments comm = commDao.getCommentInfoById(1);
