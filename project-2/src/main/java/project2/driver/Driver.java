@@ -1,7 +1,6 @@
 package project2.driver;
 
 import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -40,6 +39,33 @@ public class Driver {
     UserWordsImp wordDao = ac.getBean(UserWordsImp.class);
     UserWords word = wordDao.getWordInfoById(1);
     System.out.println(word.toString());
+    
+  //Add a new word
+    System.out.println("Save new word");
+    UserWords newWord = new UserWords();
+    Associates newAssociate = new Associates();
+    newAssociate.setFirstName("Donkey");
+    newAssociate.setLastName("Kong");
+    newAssociate.setPasscode("Smash");
+    newAssociate.setUsername("dking");
+    newAssociate.setPicture(null);
+    Trainers newTrainer = new Trainers();
+    newTrainer.setFirstName("Adam King");
+    newTrainer.setLastName("King");
+    newTrainer.setPasscode("Revature");
+    newTrainer.setUsername("aking");
+    newWord.setWord("Sad");
+    newWord.setId(2);
+    newWord.setTrainerUser(newTrainer);
+    newWord.setUserUser(newAssociate);
+    wordDao.saveOrUpdateWord(newWord);
+  //Getting all words by trainer
+    System.out.println("GET WORDS TESTING");
+    List<UserWords> allWordsByTrainer = wordDao.getAllWordsByTrainer("aking");
+    System.out.println(allWordsByTrainer);
+  //Getting all words by associate
+    List<UserWords> allWordsByAssociate = wordDao.getAllWordsByAssociate("dking");
+    System.out.println(allWordsByAssociate);
   //Closing application context
     ((ConfigurableApplicationContext)ac).close();
     
