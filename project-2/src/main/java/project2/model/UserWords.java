@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user_words")
@@ -41,7 +42,8 @@ public class UserWords {
   public void setWord(String word) {
     this.word = word;
   }
-
+  
+  @JsonIgnore
   public Trainers getTrainerUser() {
     return trainerUser;
   }
@@ -49,7 +51,8 @@ public class UserWords {
   public void setTrainerUser(Trainers trainerUser) {
     this.trainerUser = trainerUser;
   }
-
+  
+  @JsonIgnore
   public Associates getUserUser() {
     return userUser;
   }
@@ -60,7 +63,7 @@ public class UserWords {
 
   @Override
   public String toString() {
-    return "UserWords [id=" + id + ", trainerUser=" + trainerUser + ", userUser=" + userUser
+    return "UserWords [id=" + id + ", trainerUser=" + trainerUser.getUsername() + ", userUser=" + userUser.getUsername()
         + ", word=" + word + "]";
   }
 
