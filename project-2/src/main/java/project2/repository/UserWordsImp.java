@@ -1,7 +1,5 @@
 package project2.repository;
 
-import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,36 +25,7 @@ public class UserWordsImp {
     Session session = sf.getCurrentSession();    
     UserWords user = (UserWords) session.get(UserWords.class, id);    
     return user;
-  }
-  
-  public List<UserWords> getAllWordsByTrainer(String trainerUsername){
-    Session session = sf.getCurrentSession();
-    Query q = session.createQuery("from UserWords where trainer_username = :trainerUser");
-    q.setParameter("trainerUser", trainerUsername);
     
-    
-    List<UserWords> result = q.list();
-    
-    return result;
-    
-  }
-  
-  public List<UserWords> getAllWordsByAssociate(String associateUsername){
-    Session session = sf.getCurrentSession();
-    Query q = session.createQuery("from UserWords where user_username = :userUser");
-    q.setParameter("userUser", associateUsername);
-    
-    List<UserWords> result = q.list();
-    
-    return result;
-    
-  }
-  
-  public void saveOrUpdateWord(UserWords newWord) {
-    
-    Session session = sf.getCurrentSession();
-    
-    session.saveOrUpdate(newWord);
   }
 
 
