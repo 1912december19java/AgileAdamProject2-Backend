@@ -8,8 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_comments")
-public class UserComments {
+@Table(name = "user_words")
+public class UserWords {
   
   @Id
   @Column(name="id")
@@ -23,14 +23,8 @@ public class UserComments {
   @JoinColumn(name="user_username")
   private Associates userUser;
   
-  @Column(name="comment_text")
-  private String commentText;
-  
-  @Column(name="date_posted")
-  private String datePosted;
-  
-  @Column(name="approval")
-  private String approval;
+  @Column(name="word")
+  private String word;
 
   public Integer getId() {
     return id;
@@ -40,28 +34,12 @@ public class UserComments {
     this.id = id;
   }
 
-  public String getCommentText() {
-    return commentText;
+  public String getWord() {
+    return word;
   }
 
-  public void setCommentText(String commentText) {
-    this.commentText = commentText;
-  }
-
-  public String getDatePosted() {
-    return datePosted;
-  }
-
-  public void setDatePosted(String datePosted) {
-    this.datePosted = datePosted;
-  }
-
-  public String getApproval() {
-    return approval;
-  }
-
-  public void setApproval(String approval) {
-    this.approval = approval;
+  public void setWord(String word) {
+    this.word = word;
   }
 
   public Trainers getTrainerUser() {
@@ -82,9 +60,8 @@ public class UserComments {
 
   @Override
   public String toString() {
-    return "UserComments [id=" + id + ", trainerUser=" + trainerUser + ", userUser=" + userUser
-        + ", commentText=" + commentText + ", datePosted=" + datePosted + ", approval=" + approval
-        + "]";
+    return "UserWords [id=" + id + ", trainerUser=" + trainerUser + ", userUser=" + userUser
+        + ", word=" + word + "]";
   }
-  
+
 }
