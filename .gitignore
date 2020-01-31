@@ -147,7 +147,7 @@ local.properties
 hs_err_pid*
 
 ### Maven ###
-project2/target/
+project-2/target/
 log/
 pom.xml.tag
 pom.xml.releaseBackup
