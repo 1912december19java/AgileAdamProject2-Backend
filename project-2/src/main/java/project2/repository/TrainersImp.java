@@ -1,5 +1,8 @@
 package project2.repository;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +28,21 @@ public class TrainersImp {
     Session session = sf.getCurrentSession();
     
     
-    Trainers user = (Trainers) session.get(Trainers.class, username);
+    Trainers trainer = (Trainers) session.get(Trainers.class, username);
     
     
-    return user;
+    return trainer;
     
   }
+  
+  public List<Trainers> getAllTrainerInformation() {
+		Session session = sf.getCurrentSession();
+		
+		Criteria c = session.createCriteria(Trainers.class);
+		List<Trainers> trainers = c.list();
+		
+		return trainers;
+	}
 
 
 }
