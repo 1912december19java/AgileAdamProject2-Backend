@@ -39,8 +39,6 @@ public class Driver {
     UserWordsImp wordDao = ac.getBean(UserWordsImp.class);
     UserWords word = wordDao.getWordInfoById(1);
     System.out.println(word.toString());
-  //Testing get count of a word
-    System.out.println(wordDao.getCountOfWord("Happy"));
   //Closing application context
     ((ConfigurableApplicationContext)ac).close();
     
