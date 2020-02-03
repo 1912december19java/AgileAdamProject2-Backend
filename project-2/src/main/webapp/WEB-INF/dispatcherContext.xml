@@ -13,11 +13,16 @@
 	<context:component-scan
 		base-package="project2.controller" />
 
+	<context:annotation-config></context:annotation-config>
+	<bean class="project2.TrainerConfig"></bean>
+
+
 	<!-- Use annotations for MVC -->
 	<mvc:annotation-driven />
 
 	<!-- enable retrieval of static resources -->
 	<mvc:resources mapping="/static/**"
 		location="/WEB-INF/static/" />
+
 
 </beans>
