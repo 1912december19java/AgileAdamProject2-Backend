@@ -1,6 +1,7 @@
 package project2.repository;
 
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,11 +32,15 @@ public class UserWordsImp {
   
   public List<UserWords> getAllWordsByTrainer(String trainerUsername){
     Session session = sf.getCurrentSession();
-    Query q = session.createQuery("from UserWords where trainer_username = :trainerUser");
-    q.setParameter("trainerUser", trainerUsername);
+    Query q = session.createQuery("from UserWords word where word.trainerUser.username = :trainerUsername");
+    q.setString("trainerUsername", trainerUsername);
+    
+    //Criteria q = session.createCriteria(UserWords.class);
     
     
     List<UserWords> result = q.list();
+    
+    System.out.println(result);
     
     return result;
     
@@ -43,21 +48,23 @@ public class UserWordsImp {
   
   public List<UserWords> getAllWordsByAssociate(String associateUsername){
     Session session = sf.getCurrentSession();
-    Query q = session.createQuery("from UserWords where user_username = :userUser");
-    q.setParameter("userUser", associateUsername);
+    
+    Query q = session.createQuery("from UserWords word where word.userUser.username = :associateUsername");
+    q.setString("associateUsername", associateUsername);
     
     List<UserWords> result = q.list();
+    
+    System.out.println(result);
     
     return result;
     
   }
   
-  public void saveOrUpdateWord(UserWords newWord) {
+  public void save(UserWords newWord) {
     
     Session session = sf.getCurrentSession();
     
-    session.saveOrUpdate(newWord);
+    session.save(newWord);
   }
-
 
 }
