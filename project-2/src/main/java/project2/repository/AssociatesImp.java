@@ -24,14 +24,11 @@ public class AssociatesImp {
 
   public Associates getUserInfoByUsername(String username) {
     
-    Session session = sf.getCurrentSession();
+    Session session = sf.getCurrentSession();    
     
+    Associates user = (Associates) session.get(Associates.class, username);    
     
-    Associates user = (Associates) session.get(Associates.class, username);
-    
-    
-    return user;
-    
+    return user;    
   }
   
   public List<Associates> getAllUsers(){

@@ -1,7 +1,11 @@
 package project2.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,6 +17,7 @@ public class UserComments {
   
   @Id
   @Column(name="id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   
   @ManyToOne
@@ -27,7 +32,8 @@ public class UserComments {
   private String commentText;
   
   @Column(name="date_posted")
-  private String datePosted;
+  //private String datePosted;
+  private Date datePosted;
   
   @Column(name="approval")
   private String approval;
@@ -48,11 +54,11 @@ public class UserComments {
     this.commentText = commentText;
   }
 
-  public String getDatePosted() {
+  public Date getDatePosted() {
     return datePosted;
   }
 
-  public void setDatePosted(String datePosted) {
+  public void setDatePosted(Date datePosted) {
     this.datePosted = datePosted;
   }
 
