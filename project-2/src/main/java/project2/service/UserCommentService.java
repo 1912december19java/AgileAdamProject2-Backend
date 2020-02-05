@@ -36,6 +36,11 @@ public class UserCommentService implements ModelService<UserComments>{
 	public void saveOrUpdate(UserComments userComments) {
 		userCommentsDao.saveOrUpdate(userComments);
 	}
+	
+	
+	public List<UserComments> getAllCommentsOfTrainer(String username) {
+	  return userCommentsDao.getAllCommentsOfTrainer(username);
+	}
 
 	
 }
