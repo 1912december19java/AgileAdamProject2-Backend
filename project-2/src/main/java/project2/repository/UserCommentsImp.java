@@ -3,6 +3,7 @@ package project2.repository;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,15 @@ public class UserCommentsImp {
 		return userComments;
 	}
 	
+  	public List<UserComments> getAllCommentsOfTrainer(String username){
+  	  Session session = sf.getCurrentSession();
+  	  Query q = session.createQuery("from UserComments userComments where userComments.trainerUser.username = :trainerUsername");
+  	  q.setParameter("trainerUsername", username);
+  	  List<UserComments> userComments = q.list();
+  	  System.out.println(userComments);
+  	  return userComments;
+  	}
+  	
   
 	public UserComments getCommentInfoById(Integer id) {
 		Session session = sf.getCurrentSession();

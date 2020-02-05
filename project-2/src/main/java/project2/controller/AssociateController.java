@@ -36,14 +36,6 @@ public class AssociateController {
       return assDao.getUserInfoByUsername(username);
   }  
   
-  /*
-  @GetMapping
-  public List<Associates> getAll(){
-    return assDao.getAllUsers();
-  }
-  */
-  
-  
   @PostMapping("/{username}")
   public Associates replace(@RequestBody Associates user, String username) {
     user.setUsername(username);
