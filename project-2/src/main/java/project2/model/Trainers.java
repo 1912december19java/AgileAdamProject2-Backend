@@ -1,5 +1,6 @@
 package project2.model;
 
+import java.util.Arrays;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,7 +24,13 @@ public class Trainers {
   private String lastName;
   
   @Column(name="picture")
-  private String picture;
+  private byte[] picture;
+  
+  @Column(name="location")
+  private String location;
+  
+  @Column(name="curriculum")
+  private String curriculum;
 
   public String getUsername() {
     return username;
@@ -57,18 +64,37 @@ public class Trainers {
     this.lastName = lastName;
   }
 
-  public String getPicture() {
+  public byte[] getPicture() {
     return picture;
   }
 
-  public void setPicture(String picture) {
+  public void setPicture(byte[] picture) {
     this.picture = picture;
+  }
+
+  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public String getCurriculum() {
+    return curriculum;
+  }
+
+  public void setCurriculum(String curriculum) {
+    this.curriculum = curriculum;
   }
 
   @Override
   public String toString() {
     return "Trainers [username=" + username + ", passcode=" + passcode + ", firstName=" + firstName
-        + ", lastName=" + lastName + ", picture=" + picture + "]";
-  } 
+        + ", lastName=" + lastName + ", picture=" + Arrays.toString(picture) + ", location="
+        + location + ", curriculum=" + curriculum + "]";
+  }
+
+  
 
 }
