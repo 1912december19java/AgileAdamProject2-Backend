@@ -42,7 +42,7 @@ public class UserWordController {
   }
   
   @CrossOrigin
-  @PostMapping
+  @PostMapping("/addWord")
   @ResponseStatus(code = HttpStatus.CREATED)
   public void saveNewWord(@RequestBody UserWords newWord) {
     wordDao.save(newWord);
