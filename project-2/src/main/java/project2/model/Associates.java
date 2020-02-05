@@ -23,7 +23,7 @@ public class Associates {
   private String lastName;
   
   @Column(name="picture")
-  private String picture;
+  private byte[] picture;
 
   public String getUsername() {
     return username;
@@ -57,11 +57,11 @@ public class Associates {
     this.lastName = lastName;
   }
 
-  public String getPicture() {
+  public byte[] getPicture() {
     return picture;
   }
 
-  public void setPicture(String picture) {
+  public void setPicture(byte[] picture) {
     this.picture = picture;
   }
 
