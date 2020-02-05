@@ -36,10 +36,12 @@ public class AssociateController {
       return assDao.getUserInfoByUsername(username);
   }  
   
+  /*
   @GetMapping
   public List<Associates> getAll(){
     return assDao.getAllUsers();
   }
+  */
   
   
   @PostMapping("/{username}")
