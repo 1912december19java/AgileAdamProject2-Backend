@@ -25,17 +25,20 @@ public class AssociateController {
   @Autowired
   private AssociatesImp assDao;
   
+  @CrossOrigin
   @GetMapping
   public List<Associates> getAllUsers() {
 	  System.out.println("hi");
 	  return assDao.getAllUsers();
   }
 
+  @CrossOrigin
   @GetMapping("/{username}")
   public Associates get(@PathVariable String username) {
       return assDao.getUserInfoByUsername(username);
   }  
   
+  @CrossOrigin
   @PostMapping("/{username}")
   public Associates replace(@RequestBody Associates user, String username) {
     user.setUsername(username);
