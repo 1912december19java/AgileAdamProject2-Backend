@@ -71,9 +71,16 @@ public class UserCommentsImp {
 	}
 	
 	
-	public void delete(UserComments userComments) {
+//	public void delete(UserComments userComments) {
+//		Session session = sf.getCurrentSession();
+//		session.delete(userComments);
+//	}
+	public void deleteById(int  id) {
+		System.out.println("deleteById() here" + id);
 		Session session = sf.getCurrentSession();
-		session.delete(userComments);
-	}
-
+		 Query q = session.createQuery("delete from UserComments userComments where userComments.id = :Id");
+	  	  q.setParameter("Id", id);
+	  	  q.executeUpdate();
+	  	}
+	
 }

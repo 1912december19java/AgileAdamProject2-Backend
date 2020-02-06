@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,11 +53,19 @@ public class UserCommentController {
 	}
 	
 	
-  @PutMapping(value = "/{id}")
-	public UserComments update(@RequestBody UserComments userComments, @PathVariable int id) {
-		userComments.setId(id);
+  
+  @PutMapping(value = "/{username}")
+	public UserComments update(@RequestBody UserComments userComments, @PathVariable String username) {
+		userComments.getTrainerUser().setUsername(username);
 		userCommentsService.saveOrUpdate(userComments);
+		System.out.println("You hit the /comments/{username} post");
 		return userComments;
+	}
+  
+  @DeleteMapping (value = "/{id}")
+  public void deleteComment(@PathVariable int id) {
+	  System.out.println("Deleting this comment" + id);
+	  commentDao.deleteById(id);
 	}
   
   @GetMapping("/byTrainer/{username}")
