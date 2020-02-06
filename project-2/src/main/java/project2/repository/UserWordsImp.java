@@ -72,13 +72,8 @@ public class UserWordsImp {
   public List getWordsByTrainerWithCount(String trainerUsername){
     Session session = sf.getCurrentSession();
     
-    //Criteria criteria = session.createCriteria(UserWords.class);
-    //criteria.setProjection(Projections.rowCount());
-    //criteria.uniqueResult();
-    
-    //System.out.println(criteria.uniqueResult());
-    
-    Query q = session.createQuery("select userword.word, count(userword.word) from UserWords userword group by userword.word");
+    Query q = session.createQuery("select userword.word, count(userword.word) from UserWords userword where word.trainerUser.username = :trainerUsername group by userword.word");
+    q.setParameter("trainerUsername", trainerUsername);
     
     List result = q.list();
     
