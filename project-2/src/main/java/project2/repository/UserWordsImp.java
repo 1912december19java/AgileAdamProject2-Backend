@@ -72,7 +72,13 @@ public class UserWordsImp {
   public List getWordsByTrainerWithCount(String trainerUsername){
     Session session = sf.getCurrentSession();
     
-    Query q = session.createQuery("select userword.word, count(userword.word) from UserWords userword where word.trainerUser.username = :trainerUsername group by userword.word");
+    System.out.println("USERDAO:" + trainerUsername);
+    
+    Query q = session.createQuery(
+        "select userword.word, count(userword.word) "
+        + "from UserWords userword "
+        + "where userword.trainerUser.username = :trainerUsername "
+        + "group by userword.word");
     q.setParameter("trainerUsername", trainerUsername);
     
     List result = q.list();
