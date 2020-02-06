@@ -43,10 +43,12 @@ public class UserCommentController {
   
   
   //@PostMapping(consumes = "application/json")
-  @PostMapping
+  @PostMapping("/addComment")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Integer create(UserComments userComments) {
-		return userCommentsService.save(userComments);
+	public void create(@RequestBody UserComments userComments) {
+      System.out.println("Hello?");
+      System.out.println(userComments.getCommentText());
+      commentDao.save(userComments);
 	}
 	
 	

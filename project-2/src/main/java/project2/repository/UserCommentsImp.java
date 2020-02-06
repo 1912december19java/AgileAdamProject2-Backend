@@ -38,7 +38,7 @@ public class UserCommentsImp {
   	  Query q = session.createQuery("from UserComments userComments where userComments.trainerUser.username = :trainerUsername");
   	  q.setParameter("trainerUsername", username);
   	  List<UserComments> userComments = q.list();
-  	  System.out.println(userComments);
+  	  //System.out.println(userComments);
   	  return userComments;
   	}
   	
@@ -58,7 +58,9 @@ public class UserCommentsImp {
 	
 	public Integer save(UserComments userComments) {
 		Session session = sf.getCurrentSession();
+		System.out.println("Hello");
 		Integer id = (Integer) session.save(userComments);
+		System.out.println(id);
 		return id;
 	}
 	
